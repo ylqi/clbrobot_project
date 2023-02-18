@@ -1,0 +1,11 @@
+<launch>
+  <arg name="astra"      doc="Set astra(astra or usb camera) is true , set d435 is false"/>
+  <arg     if="$(env USB_CAMERA)" name="input_image"        default="/camera/rgb/image_raw"/>
+  <arg unless="$(env USB_CAMERA)" name="input_image"      default="/camera/color/image_raw"/>
+
+   <include file="$(find clbrobot_deep_learning)/launch/clbrobot_detect.launch" />
+
+  <node name="clbrobot_object_follower" pkg="clbrobot_object_follower" type="clbrobot_object_follower.py" output="screen" >
+      <param name="camera_topic" value="$(arg input_image)" type="string" />
+  </node>
+</launch>

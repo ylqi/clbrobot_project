@@ -1,0 +1,7 @@
+<launch>
+   <node pkg="clbrobot_ar_track" name="ar_tags_cog" type="ar_tags_cog.py" clear_params="true" output="screen">
+      <rosparam>
+         tag_ids: [0, 1, 2]
+      </rosparam>
+   </node>
+</launch>

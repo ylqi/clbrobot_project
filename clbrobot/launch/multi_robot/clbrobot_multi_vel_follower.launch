@@ -1,0 +1,7 @@
+<launch>
+     <node name="multi_vel_robot_follow" pkg="clbrobot" type="clbrobot_speed_listener.py" output="screen">
+	<param name="listen_robot" value="clb1" type="string" />
+	<param name="follow_robot" value="clb2" type="string" />
+     </node>
+</launch>
+

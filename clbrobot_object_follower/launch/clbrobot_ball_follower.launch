@@ -1,0 +1,18 @@
+<launch>
+  <arg name="astra"      doc="Set astra(astra or usb camera) is true , set d435 is false"/>
+  <arg     if="$(env USB_CAMERA)" name="input_image"        default="/camera/rgb/image_raw"/>
+  <arg unless="$(env USB_CAMERA)" name="input_image"      default="/camera/color/image_raw"/>
+  
+  <group if="$(arg astra)">
+     <include file="$(find clbrobot)/launch/camera.launch" />
+  </group>
+
+  <group unless="$(arg astra)">
+     <include file="$(find realsense2_camera)/launch/rs_rgbd.launch" />
+  </group>
+
+  <include file="$(find clbrobot_object_detect)/launch/clbrobot_ball_object.launch" />
+  <node name="clbrobot_ball_follower" pkg="clbrobot_object_follower" type="clbrobot_ball_follower.py" output="screen" >
+      <param name="camera_topic" value="$(arg input_image)" type="string" />
+  </node>
+</launch>

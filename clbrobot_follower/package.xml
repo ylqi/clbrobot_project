@@ -1,0 +1,26 @@
+<package>
+  <name>clbrobot_follower</name>
+  <version>2.3.7</version>
+  <description>
+       Follower for the clbrobot. Follows humans and robots around by following the centroid of a box points in front of the clbrobot.
+  </description>
+
+  <maintainer email="364711106@qq.com">zhuning239</maintainer>
+
+  <license>BSD</license>
+
+  <author email="364711106@qq.com">zhuning239</author> 
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>depth_image_proc</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>cv_bridge</build_depend>
+  <build_depend>image_transport</build_depend>
+
+  <run_depend>cv_bridge</run_depend>
+  <run_depend>image_transport</run_depend>
+  <run_depend>depth_image_proc</run_depend>
+  <run_depend>roscpp</run_depend>
+
+</package>

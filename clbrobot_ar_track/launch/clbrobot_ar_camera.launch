@@ -1,0 +1,5 @@
+<launch>
+   <include if="$(env USB_CAMERA)"  file="$(find clbrobot_ar_track)/launch/clbrobot_ar_astra_camera.launch" />
+   <include unless="$(env USB_CAMERA)"  file="$(find clbrobot_ar_track)/launch/clbrobot_ar_d435camera.launch" />
+ 
+</launch>

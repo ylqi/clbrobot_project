@@ -1,0 +1,6 @@
+<launch>
+  
+  <node pkg="clbrobot" type="clbrobot_connect_bluetooth.py" name="clbrobot_connect_bluetooth" output="screen" >
+  </node>
+ 
+</launch>

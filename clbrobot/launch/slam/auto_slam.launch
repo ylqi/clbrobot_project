@@ -1,0 +1,7 @@
+<launch>
+ <include file="$(find clbrobot)/launch/lidar/$(env CLBLIDAR).launch" />
+  <include file="$(find clbrobot)/param/navigation/slam_gmapping.xml" />
+  <include file="$(find clbrobot)/param/navigation/move_base.xml" />
+  <include file="$(find explore_lite)/launch/explore.launch" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find clbrobot)/rviz/slam.rviz" required="true" />
+</launch>

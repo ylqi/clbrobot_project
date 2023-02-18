@@ -1,0 +1,4 @@
+<launch>
+   <include if="$(env USB_CAMERA)"  file="$(find clbrobot_gesture_detect)/launch/clbrobot_gesture_astra_detect.launch" />
+   <include unless="$(env USB_CAMERA)"  file="$(find clbrobot_gesture_detect)/launch/clbrobot_d435gesture_detect.launch" />
+</launch>

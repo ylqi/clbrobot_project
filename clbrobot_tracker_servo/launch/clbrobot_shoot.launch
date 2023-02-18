@@ -1,0 +1,6 @@
+<launch>
+  <node name="clbrobot_shoot" pkg="clbrobot_tracker_servo" type="clbrobot_shoot.py" output="screen" >
+    <param name="fast_detect" value="True" type="bool" />
+    <param name="offset" value="30" type="int" />
+  </node>
+</launch>
