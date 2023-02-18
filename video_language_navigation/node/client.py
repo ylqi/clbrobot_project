@@ -218,6 +218,8 @@ class NavigationClient():
         self.pub_thread.wait_for_subscribers()
         self.pub_thread.update(x, y, z, th, speed, turn)
 
+        prompt = input("Please input the language prompt: ")
+
         print(msg)
         print(vels(speed,turn))
 
@@ -269,12 +271,13 @@ class NavigationClient():
                 
                 picSize = len(picBytes)
                
-                datalen = 64 + 1 + 4 + 4 + 4 + 4 + 4 + 4 + picSize
+                datalen = 64 + 1 + 128 + 4 + 4 + 4 + 4 + 4 + 4 + picSize
                 
                 arrBuf += bytearray(datalen.to_bytes(4, byteorder='little'))
                 guid = 23458283482894382928948
                 arrBuf += bytearray(guid.to_bytes(64, byteorder='little'))
                 arrBuf += b'\x00' if mode == "train" else b'\x01'
+                arrBuf += prompt.ljust(128, "*").encode('utf-8')
                 arrBuf += bytearray(struct.pack('<f', x))
                 arrBuf += bytearray(struct.pack('<f', y))
                 arrBuf += bytearray(struct.pack('<f', z))
