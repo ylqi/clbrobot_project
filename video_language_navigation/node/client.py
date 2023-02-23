@@ -287,8 +287,39 @@ class NavigationClient():
                 arrBuf += picBytes
                 
                 sock.sendall(arrBuf)
-                sock.close()
                 # -------------------- Send to server --------------------
+                
+                # ------------------ Receive from server -----------------
+                if mode == 'test':
+                    recv_str = sock.recv(8)
+                    data = bytearray(recv_str)
+                    headIndex = data.find(b'\xff\xaa\xff\xaa')
+                    if headIndex == 0:
+                        allLen = int.from_bytes(data[headIndex+4:headIndex+8], byteorder='little'
+                        curSize = 0
+                        allData = b''
+                        while curSize < allLen:
+                            data = sock.recv(1024)
+                            allData += data
+                            curSize += len(data)
+                        
+                        arrGuid = allData[0:64]
+                        tail = arrGuid.find(b'\x00')
+                        arrGuid = arrGuid[0:tail]
+                    
+                        xData = allData[64:69]
+                        yData = allData[69:73]
+                        zData = allData[73:77]
+                        thData = allData[77:81]
+                    
+                        x = struct.unpack('<f', xData)[0]
+                        y = struct.unpack('<f', yData)[0]
+                        z = struct.unpack('<f', zData)[0]
+                        th = struct.unpack('<f', thData)[0]
+                    
+                        self.pub_thread.update(x, y, z, th, speed, turn)
+                # ------------------ Receive from server -----------------
+                sock.close()
                 
            
                 r.sleep()
