@@ -295,7 +295,7 @@ class NavigationClient():
                     data = bytearray(recv_str)
                     headIndex = data.find(b'\xff\xaa\xff\xaa')
                     if headIndex == 0:
-                        allLen = int.from_bytes(data[headIndex+4:headIndex+8], byteorder='little'
+                        allLen = int.from_bytes(data[headIndex+4:headIndex+8], byteorder='little')
                         curSize = 0
                         allData = b''
                         while curSize < allLen:
