@@ -316,6 +316,11 @@ class NavigationClient():
                         y = struct.unpack('<f', yData)[0]
                         z = struct.unpack('<f', zData)[0]
                         th = struct.unpack('<f', thData)[0]
+
+                        print("Receive action: x: %d, y: %d, z: %d, th: %d" % (x, y, z, th))
+                        if x == -2 and y == -2:
+                            print("Done!")
+                            self.shutdown()
                     
                         self.pub_thread.update(x, y, z, th, speed, turn)
                 # ------------------ Receive from server -----------------
