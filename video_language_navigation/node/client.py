@@ -22,7 +22,7 @@ import threading
 import struct
  
 HOST, PORT = "172.16.38.29", 19984
-mode = 'train'
+mode = 'test'
 if mode == 'train':
     print("######### Start Training ##########")
 else:
@@ -307,10 +307,10 @@ class NavigationClient():
                         tail = arrGuid.find(b'\x00')
                         arrGuid = arrGuid[0:tail]
                     
-                        xData = allData[64:69]
-                        yData = allData[69:73]
-                        zData = allData[73:77]
-                        thData = allData[77:81]
+                        xData = allData[64:68]
+                        yData = allData[68:72]
+                        zData = allData[72:76]
+                        thData = allData[76:80]
                     
                         x = struct.unpack('<f', xData)[0]
                         y = struct.unpack('<f', yData)[0]
